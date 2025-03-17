@@ -2,7 +2,7 @@ use cosmwasm_schema::cw_serde;
 // use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
-use cosmwasm_std::Addr;
+use cosmwasm_std::{Addr, Uint128};
 use cw_storage_plus::{Item, Map};
 
 #[cw_serde]
@@ -26,6 +26,7 @@ impl Config {
 }
 
 pub const CONFIG: Item<Config> = Item::new("config");
-
+pub const TOTAL_REWARD : Item<Uint128> = Item::new("total_reward");
 // map
-pub const last_claimed_period: Map<&Addr, u64> = Map::new("last_claimed_period");
+pub const USER_PERIODIC_REWARD: Map<&Addr, u64> = Map::new("user_periodic_reward");
+pub const LAST_CLAIMED_PERIOD: Map<&Addr, u64> = Map::new("last_claimed_period");
